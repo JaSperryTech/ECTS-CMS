@@ -1,10 +1,9 @@
-// FileView.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const FileView = () => {
-  const { folderId } = useParams();
+  const { folderId } = useParams(); // Get the folderId from the URL
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -12,11 +11,12 @@ const FileView = () => {
     const fetchFiles = async () => {
       try {
         const response = await axios.get(
-          `/api/v1/listFiles?folder=${folderId}`
+          `http://localhost:3000/api/v1/listFiles?folder=${folderId}`
         );
-        setFiles(response.data);
+        console.log(response.data); // Log the response for debugging
+        setFiles(response.data); // Set the files directly since it's an array
       } catch (error) {
-        console.error("Error fetching files", error);
+        console.error("Error Fetching the Files", error);
       } finally {
         setLoading(false);
       }
@@ -29,16 +29,18 @@ const FileView = () => {
 
   return (
     <div>
-      <h1>Files in Folder</h1>
-      <ul>
-        {files.map((file) => (
-          <li key={file.id}>
-            {file.name} (Version: {file.version})
-            {/* Add links to view files, e.g., a link to open documents */}
-            {/* You can customize this further based on file type */}
-          </li>
-        ))}
-      </ul>
+      <h1>Files in Folder: {folderId}</h1>
+      {files.length > 0 ? (
+        <ul>
+          {files.map((file) => (
+            <li key={file.id}>
+              {file.name} (Version: {file.version})
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <div>No files found in this folder.</div>
+      )}
     </div>
   );
 };
