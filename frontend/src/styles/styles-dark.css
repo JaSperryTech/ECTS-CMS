@@ -1,0 +1,104 @@
+/* General Styling */
+html.dark body,
+html.dark {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: rgba(30, 30, 30, 0.95); /* Dark background */
+}
+
+/* Header Styling */
+html.dark header {
+  background-color: #1e2a38; /* Dark header background */
+  color: white; /* White text color */
+  padding: 15px 0;
+  text-align: center;
+  position: relative;
+  top: 0;
+  width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+html.dark header .logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+html.dark header nav {
+  margin-top: 10px;
+}
+
+html.dark header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+html.dark header nav ul li {
+  display: inline;
+  margin: 0 15px;
+}
+
+html.dark header nav ul li a {
+  text-decoration: none;
+  color: white; /* White link color */
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+html.dark header nav ul li a:hover {
+  color: #ffa500; /* Hover color */
+}
+
+/* Footer Styling */
+html.dark footer {
+  background-color: #1e2a38; /* Dark footer background */
+  color: white; /* White text color */
+  text-align: center;
+  padding: 20px 0;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+html.dark footer p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+html.dark footer nav ul {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+
+html.dark footer nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+html.dark footer nav ul li a {
+  text-decoration: none;
+  color: white; /* White link color */
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+html.dark footer nav ul li a:hover {
+  color: #ffa500; /* Hover color */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  header nav ul li,
+  footer nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  header .logo {
+    font-size: 20px;
+  }
+}

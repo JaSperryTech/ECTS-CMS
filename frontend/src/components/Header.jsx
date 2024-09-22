@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "../styles/styles-light.css";
+import "../styles/styles-dark.css";
 
-function Header() {
-    return (
-        <header>
-            <h1>Welcome to ECTS's CMS</h1>
-            <nav>
-                <a href="/">Home</a>
-                <a href="/about">About</a>
-            </nav>
-        </header>
-    );
-}
+const Header = () => {
+  const [theme, setTheme] = useState("light");
+
+  // Apply the theme by updating the class of the html element
+  useEffect(() => {
+    document.documentElement.className = theme; // Set class on <html>
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
+  return (
+    <header>
+      <div className="logo">CMS Title</div>
+      <nav>
+        <ul>
+          <li>
+            <a href="#">Home</a>
+          </li>
+          <li>
+            <a href="#">Library</a>
+          </li>
+          <li>
+            <a href="#">Tags</a>
+          </li>
+          <li>
+            <a href="#">About</a>
+          </li>
+        </ul>
+      </nav>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+    </header>
+  );
+};
 
 export default Header;
