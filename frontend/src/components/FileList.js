@@ -1,37 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const FolderList = ({ folders }) => {
-  const renderFolders = (folders) => {
-    return (
-      <ul>
-        {folders.map(folder => {
-          const subfolders = folder.files?.filter(file => 
-            file.mimeType === 'application/vnd.google-apps.folder'
-          );
+  // Log the folders to check if the data is correct
+  useEffect(() => {
+    console.log("Folders received:", folders);
+  }, [folders]);
 
+  return (
+    <ul>
+      {folders.length > 0 ? (
+        folders.map(folder => {
+          // Find the CMS folder
+          const cmsFolder = folder.files.find(file => file.name === 'CMS' && file.mimeType === 'application/vnd.google-apps.folder');
           return (
             <li key={folder.id}>
-              {subfolders && subfolders.length > 0 && (
-                <>
-                  {subfolders.map(subfolder => (
-                    <div key={subfolder.id}>
-                      <Link to={`/files/${subfolder.id}`}>
-                        {subfolder.name}
-                      </Link>
-                    </div>
-                  ))}
-                  {renderFolders(subfolders)} {/* Render nested folders recursively */}
-                </>
-              )}
+              <Link to={`/files/${folder.id}`}>
+                {cmsFolder ? cmsFolder.name : 'Unnamed Folder'}
+              </Link>
             </li>
           );
-        })}
-      </ul>
-    );
-  };
-
-  return <div>{renderFolders(folders)}</div>;
+        })
+      ) : (
+        <li>No folders found.</li>  // Display a message if no folders are available
+      )}
+    </ul>
+  );
 };
 
 export default FolderList;

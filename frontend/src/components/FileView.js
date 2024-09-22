@@ -38,6 +38,15 @@ const FileView = () => {
                 <Link to={`/files/${file.id}`}>
                   {file.name} (Folder)
                 </Link>
+              ) : file.mimeType === 'application/pdf' ? (
+                // Link to the specific PDF route
+                <Link to={`/files/${folderId}/pdf/${file.id}`}>
+                  {file.name} (PDF)
+                </Link>
+              ) : file.mimeType.startsWith('video/') ? (
+                <Link to={`/files/${folderId}/video/${file.id}`}>
+                  {file.name} (Video)
+                </Link>
               ) : (
                 <span>
                   {file.name} (Version: {file.version})

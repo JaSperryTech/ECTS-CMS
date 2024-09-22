@@ -23,7 +23,7 @@ const Header = () => {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/library">Libary</a>
+            <a href="/files/1VLqL6yqJTxN_drgIG8nMcODt0Xu_exFJ">Libary</a>
           </li>
           <li>
             <a href="#">Tags</a>

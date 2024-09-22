@@ -241,7 +241,8 @@ class DriveAPI {
           includeTeamDriveItems: !!teamDriveId,
           supportsTeamDrives: !!teamDriveId,
           teamDriveId,
-          fields: "files(id, name, version)",
+          // Adjust fields to include desired metadata
+          fields: "files(id, name, mimeType, size, createdTime, version)",
         },
         (err, res) => {
           if (err) return reject("The API returned an error: " + err);
