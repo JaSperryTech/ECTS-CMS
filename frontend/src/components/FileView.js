@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 const FileView = () => {
   const { folderId } = useParams(); // Get the folderId from the URL
@@ -34,7 +34,15 @@ const FileView = () => {
         <ul>
           {files.map((file) => (
             <li key={file.id}>
-              {file.name} (Version: {file.version})
+              {file.mimeType === 'application/vnd.google-apps.folder' ? (
+                <Link to={`/files/${file.id}`}>
+                  {file.name} (Folder)
+                </Link>
+              ) : (
+                <span>
+                  {file.name} (Version: {file.version})
+                </span>
+              )}
             </li>
           ))}
         </ul>

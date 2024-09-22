@@ -14,7 +14,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/libaray" element={<Library />} />
+            <Route path="/library" element={<Library />} />
             <Route path="/files/:folderId" element={<FileView />} />{" "}
             {/* Example route for file view */}
           </Routes>
