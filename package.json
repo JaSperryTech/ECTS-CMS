@@ -1,0 +1,14 @@
+{
+  "name": "ects_cms",
+  "version": "1.0.0",
+  "main": "",
+  "scripts": {
+    "start:backend": "cd backend && npm run start",
+    "start:frontend": "cd frontend && npm start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {}
+}
